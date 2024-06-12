@@ -30,6 +30,12 @@ export class Logger {
 
         level.log()(...data);
     }
+
+    error   (...data: any[]) { this.log(ERR_LEVEL, ...data); }
+    danger  (...data: any[]) { this.log(DGR_LEVEL, ...data); }
+    warning (...data: any[]) { this.log(WRN_LEVEL, ...data); }
+    info    (...data: any[]) { this.log(INF_LEVEL, ...data); }
+    debug   (...data: any[]) { this.log(DBG_LEVEL, ...data); }
 };
 
 export class LoggerFactory {

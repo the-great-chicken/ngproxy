@@ -162,3 +162,20 @@ test('logger.log', () => {
     expect(warn.mock.calls).toStrictEqual([ [ "Warning" ] ]);
     expect(log.mock.calls).toStrictEqual([ [ "Info" ], [ "Debug" ] ]);
 });
+test('logger.log.shortcuts', () => {
+    const log   = jest.fn(); console.log   = log;
+    const warn  = jest.fn(); console.warn  = warn;
+    const error = jest.fn(); console.error = error;
+
+    const logger = new Logger( "TestLogger", DBG_LEVEL );
+
+    logger.error("Error");
+    logger.danger("Danger");
+    logger.warning("Warning");
+    logger.info("Info");
+    logger.debug("Debug");
+
+    expect(error.mock.calls).toStrictEqual([ [ "Error" ], [ "Danger" ] ]);
+    expect(warn.mock.calls).toStrictEqual([ [ "Warning" ] ]);
+    expect(log.mock.calls).toStrictEqual([ [ "Info" ], [ "Debug" ] ]);
+});
