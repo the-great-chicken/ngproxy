@@ -4,5 +4,7 @@ export type NGProxyConfig = {
         defaultLogLevel?: string,
         loggerFactoryLevel?: string,
         loggers?: { [key: string]: { displayName?: string, logLevel?: string } }
-    }
+    },
+
+    authTokenSize?: number
 };

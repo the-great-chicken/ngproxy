@@ -77,7 +77,9 @@ export class LoggerFactory {
             ?? ERR_LEVEL;
     }
     build (name: string): Logger {
-        const logger = this.config.logger?.loggers[name];
+        const loggerSet = this.config.logger?.loggers;
+
+        const logger = loggerSet ? loggerSet[name] : undefined;
         
         const level       = this.getLogLevel(logger?.logLevel);
         const displayName = logger?.displayName ?? name;

@@ -7,7 +7,7 @@ const { vol, fs } = require("memfs");
 jest.mock("fs");
 
 function test_mutex (mutex: FileMutex, file: string, expects: string) {
-    expect((mutex as any).currentAuth).toStrictEqual(expects);
+    expect(mutex.getCurrentAuthToken()).toStrictEqual(expects);
 
     try {
         let buffer = fs.readFileSync(file, "utf-8");

@@ -8,6 +8,9 @@ export class FileMutex extends AbstractMutex {
     path  : string;
 
     private currentAuth: string | undefined;
+    getCurrentAuthToken (): string | undefined {
+        return this.currentAuth;
+    }
 
     private doesLockExistSync (): boolean {
         try {
